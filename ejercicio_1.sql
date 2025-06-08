@@ -1,4 +1,4 @@
--- Cantidad de órdenes y monto total de las mismas (local y en dólares), por ciudad, país y año-mes.
+-- EJERCICIO 1:Cantidad de órdenes y monto total de las mismas (local y en dólares), por ciudad, país y año-mes.
 
 WITH currency_cleaned AS (
   SELECT 
@@ -13,7 +13,8 @@ SELECT
   TO_CHAR(o.order_date::timestamp, 'YYYY-MM') AS date,
   COUNT(DISTINCT o.order_id) AS qty_orders,
   SUM(o.order_amount_local_currency) AS amount_local_currency,
-  
+
+-- Conversión de monto local a USD según formato correcto por moneda
   SUM(
     o.order_amount_local_currency / CAST(
       CASE
