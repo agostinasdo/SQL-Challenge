@@ -1,0 +1,3 @@
+-- EJERCICIO 3: Usando todas las órdenes en la base, calcular el promedio de días entre una orden y la siguiente 
+-- a nivel customer, solo para customers con al menos 5 órdenes totales. De ese resultado, quedarse solo con
+-- usuarios con un promedio mayor a 5 días. **/
