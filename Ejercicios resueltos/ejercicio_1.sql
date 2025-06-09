@@ -9,7 +9,7 @@ WITH currency_cleaned AS (
   FROM currency_mapcurrency
 ),
 	
--- Se insertan los decimales en la posición adecuada para cada tipo de moneda.
+-- Ajuste de la posición del punto decimal según la moneda
 currency_prepared AS (
   SELECT *,
     CAST(
@@ -25,7 +25,7 @@ currency_prepared AS (
   FROM currency_cleaned
 )
 
--- Agregación final: órdenes confirmadas por ciudad, país y año-mes.
+-- Órdenes confirmadas por ciudad, país y año-mes.
 SELECT
 	cc.country_name AS country,
 	o.city_name AS city,
