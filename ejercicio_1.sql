@@ -1,11 +1,15 @@
--- EJERCICIO 1:Cantidad de órdenes y monto total de las mismas (local y en dólares), por ciudad, país y año-mes.
+-- EJERCICIO 1:
+-- Cantidad de órdenes y monto total de las mismas (local y en dólares), por ciudad, país y año-mes.
 
+-- Limpieza del formato de tasa de cambio
 WITH currency_cleaned AS (
   SELECT 
     *,
     REPLACE(rate_us, '.', '') AS rate_us_clean
   FROM currency_mapcurrency
 ),
+	
+-- Se insertan los decimales en la posición adecuada para cada tipo de moneda.
 currency_prepared AS (
   SELECT *,
     CAST(
@@ -20,10 +24,12 @@ currency_prepared AS (
     ) AS exchange_rate_usd
   FROM currency_cleaned
 )
+
+-- Agregación final: órdenes confirmadas por ciudad, país y año-mes.
 SELECT
 	cc.country_name AS country,
 	o.city_name AS city,
-  	TO_CHAR(o.order_date::timestamp, 'YYYY-MM') AS date,
+  	TO_CHAR(o.order_date::timestamp, 'YYYY-MM') AS date, -- Año-mes de la orden
   	COUNT(DISTINCT o.order_id) AS qty_orders,
   	SUM(o.order_amount_local_currency) AS amount_local_currency,
 
@@ -35,7 +41,7 @@ INNER JOIN city_country_mapcitiessample cc
 	ON o.city_id = cc.city_id
 INNER JOIN currency_prepared cp
 	ON cc.country_id = cp.country_id
-    AND TO_CHAR(o.order_date::timestamp,'YYYY-MM') = TO_CHAR(cp.currency_exchange_date::timestamp,'YYYY-MM')
+   	AND TO_CHAR(o.order_date::timestamp,'YYYY-MM') = TO_CHAR(cp.currency_exchange_date::timestamp,'YYYY-MM')
 
 GROUP BY country, city, date
-ORDER BY date
+ORDER BY date;
