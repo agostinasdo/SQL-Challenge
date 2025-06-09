@@ -1,4 +1,4 @@
--- EJERCICIO: Para los 50 customers con más compras de la base, calcular qué porcentaje de estas compras se realizó
+-- EJERCICIO 5: Para los 50 customers con más compras de la base, calcular qué porcentaje de estas compras se realizó
 -- en los top 50 sellers. El top de sellers debe calcularse por monto, y el top de customers no debe calcularse por país.
 
 -- Se utiliza USD para poder comparar montos entre países de forma consistente.
@@ -22,7 +22,7 @@ currency_prepared AS (
   FROM currency_cleaned
 ),
 	
--- Calcula el top 50 de sellers según el monto total vendido (en USD)
+-- Se calcula el top 50 de sellers según el monto total vendido (en USD)
 top_sellers AS (
   SELECT seller_id,
          SUM(order_amount_local_currency / exchange_rate_usd) AS total_amount_usd
@@ -36,7 +36,7 @@ top_sellers AS (
   LIMIT 50
 ),
 
--- Calcula el top 50 de customers según la cantidad de órdenes confirmadas.
+-- Se calcula el top 50 de customers según la cantidad de órdenes confirmadas.
 top_customers AS (
   SELECT customer_id,
          COUNT(*) AS cantidad_compras
@@ -47,7 +47,7 @@ top_customers AS (
   LIMIT 50
 ),
 
--- Trae el detalle de todas las órdenes confirmadas que pertenecen a los 50 clientes principales.
+-- Se busca el detalle de todas las órdenes confirmadas que pertenecen a los 50 clientes principales.
 orders_top_customers AS (
   SELECT o2.*
   FROM orders_sampleorders_sample o2
