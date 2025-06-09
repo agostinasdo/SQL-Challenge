@@ -11,7 +11,7 @@ WITH diff_dates AS(
 			AS days_between_orders
     FROM orders_sampleorders_sample )
 
--- Se calcula la cantidad de órdenes y el promedio de días entre órdenes por cliente considerando:
+-- Cálculo de la cantidad de órdenes y el promedio de días entre órdenes por cliente considerando:
 --   a) Clientes con al menos 4 órdenes totales (ajustado por disponibilidad de datos)
 --   b) Clientes cuyo promedio entre órdenes es mayor a 5 días
 SELECT 	customer_id,
