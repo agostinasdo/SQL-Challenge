@@ -14,8 +14,8 @@ WITH orders_with_delivery_time AS (
   FROM orders_sampleorders_sample
 )
 
--- Cálculo del promedio del tiempo de entrega en minutos agrupado por país.
--- Solo se incluyen órdenes con fecha de compra en marzo 2019.
+-- Promedio del tiempo de entrega en minutos agrupado por país.
+-- Se incluyen órdenes con fecha de compra en marzo 2019.
 SELECT 
   cc.country_name AS country,
   ROUND(AVG (delivery_minutes),2) AS avg_delivery_time
