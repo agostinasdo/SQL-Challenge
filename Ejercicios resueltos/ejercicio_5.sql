@@ -49,10 +49,10 @@ top_customers AS (
 
 -- Se busca el detalle de todas las órdenes confirmadas que pertenecen a los 50 clientes principales.
 orders_top_customers AS (
-  SELECT o2.*
-  FROM orders_sampleorders_sample o2
-  INNER JOIN top_customers tc ON o2.customer_id = tc.customer_id
-  WHERE o2.order_status = 'CONFIRMED'
+  SELECT o.*
+  FROM orders_sampleorders_sample o
+  INNER JOIN top_customers tc ON o.customer_id = tc.customer_id
+  WHERE o.order_status = 'CONFIRMED'
 )
 
 -- Se calula: la cantidad total de órdenes confirmadas realizadas por ese customer y
