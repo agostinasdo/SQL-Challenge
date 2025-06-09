@@ -24,4 +24,4 @@ WHERE customer_id IN (
   GROUP BY customer_id
   HAVING COUNT(*) >= 4 ) -- Ajuste debido a que no hay clientes con 5 órdenes en la base
 GROUP BY customer_id 
-HAVING AVG(days_between_orders) > 5
+HAVING AVG(days_between_orders) > 5;
