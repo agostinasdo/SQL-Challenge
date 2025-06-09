@@ -1,9 +1,15 @@
+-- EJERCICIO 2:
+-- Cantidad de sellers que tuvieron ventas en abril 2019 en Argentina, agrupándolos por categoría, y que en marzo 2019 vendieron por lo menos 100 usd.
+
+-- Limpieza del formato de tasa de cambio
 WITH currency_cleaned AS (
   SELECT 
     *,
     REPLACE(rate_us, '.', '') AS rate_us_clean
   FROM currency_mapcurrency
 ),
+
+-- Se insertan los decimales en la posición adecuada para cada tipo de moneda.  
 currency_prepared AS (
   SELECT *,
     CAST(
@@ -18,6 +24,8 @@ currency_prepared AS (
     ) AS exchange_rate_usd
   FROM currency_cleaned
 ),
+
+-- Sellers que vendieron al menos 100 USD (calculados con tipo de cambio) durante marzo de 2019.
 sellers_marzo_ok AS (
   SELECT 
     o2.seller_id,
@@ -31,6 +39,9 @@ sellers_marzo_ok AS (
   HAVING SUM (o2.order_amount_local_currency / cp.exchange_rate_usd) >= 100
 )
 
+-- Se toma el universo de sellers que vendieron al menos 100 USD en marzo (CTE anterior),
+-- y se contabiliza cuántos de ellos hicieron ventas en abril 2019 en Argentina,
+-- agrupando los resultados por categoría.  
 SELECT 
   COALESCE(sc.categoria, 'Sin categoría asignada') AS category,
   COUNT(DISTINCT o.seller_id) AS qty_seller
