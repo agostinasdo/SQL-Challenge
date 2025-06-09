@@ -9,7 +9,7 @@ WITH currency_cleaned AS (
   FROM currency_mapcurrency
 ),
 
--- Se insertan los decimales en la posición adecuada para cada tipo de moneda.  
+-- Ajuste de la posición del punto decimal según la moneda 
 currency_prepared AS (
   SELECT *,
     CAST(
