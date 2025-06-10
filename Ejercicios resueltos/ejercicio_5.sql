@@ -1,8 +1,10 @@
--- EJERCICIO 5: Para los 50 customers con más compras de la base, calcular qué porcentaje de estas compras se realizó
--- en los top 50 sellers. El top de sellers debe calcularse por monto, y el top de customers no debe calcularse por país.
+/* EJERCICIO 5: Para los 50 customers con más compras de la base, calcular qué porcentaje de estas compras se realizó
+en los top 50 sellers. El top de sellers debe calcularse por monto, y el top de customers no debe calcularse por país. */
 
 -- Se utiliza USD para poder comparar montos entre países de forma consistente.
 -- Limpieza de los datos de tipo de cambio y se ajuste de la posición del punto decimal según la moneda
+-- Reutilización de la lógica de ejercicios 1 y 2 con el objetivo de que cada consulta sea comprensible de forma independiente
+
 WITH currency_cleaned AS (
   SELECT *, REPLACE(rate_us, '.', '') AS rate_us_clean
   FROM currency_mapcurrency
