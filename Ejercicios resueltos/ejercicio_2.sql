@@ -1,5 +1,5 @@
--- EJERCICIO 2:
--- Cantidad de sellers que tuvieron ventas en abril 2019 en Argentina, agrupándolos por categoría, y que en marzo 2019 vendieron por lo menos 100 usd.
+/* EJERCICIO 2:
+Cantidad de sellers que tuvieron ventas en abril 2019 en Argentina, agrupándolos por categoría, y que en marzo 2019 vendieron por lo menos 100 usd. */
 
 -- Limpieza del formato de tasa de cambio
 WITH currency_cleaned AS (
