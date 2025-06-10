@@ -1,5 +1,5 @@
-/*  EJERCICIO 1:
-Cantidad de órdenes y monto total de las mismas (local y en dólares), por ciudad, país y año-mes.  */
+/* EJERCICIO 1:
+Cantidad de órdenes y monto total de las mismas (local y en dólares), por ciudad, país y año-mes. */
 
 -- Limpieza del formato de tasa de cambio
 WITH currency_cleaned AS (
