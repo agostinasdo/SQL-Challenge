@@ -1,5 +1,5 @@
--- EJERCICIO 1:
--- Cantidad de órdenes y monto total de las mismas (local y en dólares), por ciudad, país y año-mes.
+/* EJERCICIO 1:
+Cantidad de órdenes y monto total de las mismas (local y en dólares), por ciudad, país y año-mes. */
 
 -- Limpieza del formato de tasa de cambio
 WITH currency_cleaned AS (
@@ -34,7 +34,7 @@ SELECT
   	SUM(o.order_amount_local_currency) AS amount_local_currency,
 
 -- Conversión de monto local a USD según formato correcto por moneda
-  SUM(o.order_amount_local_currency / cp.exchange_rate_usd) AS amount_usd
+    SUM(o.order_amount_local_currency / cp.exchange_rate_usd) AS amount_usd
 
 FROM orders_sampleorders_sample o
 INNER JOIN city_country_mapcitiessample cc
