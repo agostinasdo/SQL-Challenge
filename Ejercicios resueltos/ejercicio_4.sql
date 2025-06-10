@@ -1,4 +1,5 @@
--- EJERCICIO 4: Tiempo de entrega promedio (en min) en marzo de 2019, por país.
+/* EJERCICIO 4: 
+Tiempo de entrega promedio (en min) en marzo de 2019, por país. */
 
 -- CTE que calcula la duración de entrega en minutos para cada orden.
 -- Se utiliza EXTRACT(EPOCH) para obtener la diferencia entre fechas en segundos, luego se divide por 60 para convertirlo a minutos.
