@@ -1,7 +1,8 @@
 /* EJERCICIO 2:
 Cantidad de sellers que tuvieron ventas en abril 2019 en Argentina, agrupándolos por categoría, y que en marzo 2019 vendieron por lo menos 100 usd. */
 
--- Limpieza del formato de tasa de cambio
+-- Limpieza del formato de tasa de cambio 
+-- Se reutiliza la lógica del Ejercicio 1 con el objetivo de que las consultas sean comprensibles de forma independiente
 WITH currency_cleaned AS (
   SELECT 
     *,
